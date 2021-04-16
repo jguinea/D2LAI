@@ -34,6 +34,7 @@ def sgd(params, lr, batch_size):
     with torch.no_grad():
         for param in params:
             param -=lr*param.grad / batch_size
+            # Por defecto los gradientes se acumulan, hay que reiniciarlos
             param.grad.zero_()
 
 lr = 0.03
@@ -45,6 +46,8 @@ batch_size = 10
 for epoch in range(num_epochs):
     for X, y in data_iter(batch_size, features, labels):
         l = loss(net(X, w, b), y)
+        # Hacemos el backward en la función que queremos derivar, y se queda
+        # el gradiente guardado en las variables con requires_grad = True
         l.sum().backward()
         sgd([w, b], lr, batch_size)
     with torch.no_grad():
