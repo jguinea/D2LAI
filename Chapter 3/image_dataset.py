@@ -38,11 +38,11 @@ def show_images(imgs, num_rows, num_cols, titles=None, scale=1.5):  #@save
     plt.show()
     return fig
 
-X, y = next(iter(data.DataLoader(mnist_train, batch_size=18)))
-fig = show_images(X.reshape(18, 28, 28), 2, 9, titles=get_fashion_mnist_labels(y))
+# X, y = next(iter(data.DataLoader(mnist_train, batch_size=18)))
+# fig = show_images(X.reshape(18, 28, 28), 2, 9, titles=get_fashion_mnist_labels(y))
 
-batch_size = 256
-train_iter = data.DataLoader(mnist_train, batch_size, shuffle=True)
+# batch_size = 256
+# train_iter = data.DataLoader(mnist_train, batch_size, shuffle=True)
 
 def load_data_fashion_mnist(batch_size, resize=None):  #@save
     """Download the Fashion-MNIST dataset and then load it into memory."""
@@ -62,6 +62,6 @@ def load_data_fashion_mnist(batch_size, resize=None):  #@save
             data.DataLoader(mnist_test, batch_size, shuffle=False))
 
 train_iter, test_iter = load_data_fashion_mnist(32, resize=64)
-for X, y in train_iter:
-    print(X.shape, X.dtype, y.shape, y.dtype)
-    break
+# for X, y in train_iter:
+#     print(X.shape, X.dtype, y.shape, y.dtype)
+#     break
